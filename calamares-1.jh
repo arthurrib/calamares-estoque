@@ -1,0 +1,42 @@
+
+entity Produto {
+	estoque Integer required
+    estoqueMinimo Integer
+    valorIdeal BigDecimal
+    tipo String required
+}
+
+entity Fornecedor {
+	nome String required,
+    telefone String required
+}
+
+entity ProdutoFornecedor {
+	valor BigDecimal required,
+    observacoes String
+}
+
+entity Pedido {
+	dataPedido LocalDate required,
+	status String,
+	valorTotal BigDecimal
+}
+
+relationship OneToOne {
+	ProdutoFornecedor to Produto,
+    ProdutoFornecedor to Fornecedor
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Pedido to ProdutoFornecedor{produtoFornecedor}
+}
+// Set pagination options
+paginate Produto, Fornecedor, Pedido with pagination
+
+// Set service options to all except few
+service all with serviceClass
+dto all with mapstruct
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
