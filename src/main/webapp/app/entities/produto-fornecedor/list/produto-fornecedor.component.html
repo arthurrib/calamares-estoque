@@ -1,0 +1,128 @@
+<div>
+  <h2 id="page-heading" data-cy="ProdutoFornecedorHeading">
+    <span>Produto Fornecedors</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-produto-fornecedor"
+        [routerLink]="['/produto-fornecedor/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Produto Fornecedor </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="produtoFornecedors?.length === 0">
+    <span>No Produto Fornecedors found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="produtoFornecedors && produtoFornecedors.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span>ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="valor">
+            <div class="d-flex">
+              <span>Valor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="observacoes">
+            <div class="d-flex">
+              <span>Observacoes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="produto.id">
+            <div class="d-flex">
+              <span>Produto</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="fornecedor.id">
+            <div class="d-flex">
+              <span>Fornecedor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="produtoFornecedor.id">
+            <div class="d-flex">
+              <span>Produto Fornecedor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produtoFornecedor of produtoFornecedors; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/produto-fornecedor', produtoFornecedor.id, 'view']">{{ produtoFornecedor.id }}</a>
+          </td>
+          <td>{{ produtoFornecedor.valor }}</td>
+          <td>{{ produtoFornecedor.observacoes }}</td>
+          <td>
+            <div *ngIf="produtoFornecedor.produto">
+              <a [routerLink]="['/produto', produtoFornecedor.produto.id, 'view']">{{ produtoFornecedor.produto.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="produtoFornecedor.fornecedor">
+              <a [routerLink]="['/fornecedor', produtoFornecedor.fornecedor.id, 'view']">{{ produtoFornecedor.fornecedor.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="produtoFornecedor.produtoFornecedor">
+              <a [routerLink]="['/pedido', produtoFornecedor.produtoFornecedor.id, 'view']">{{ produtoFornecedor.produtoFornecedor.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/produto-fornecedor', produtoFornecedor.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/produto-fornecedor', produtoFornecedor.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(produtoFornecedor)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

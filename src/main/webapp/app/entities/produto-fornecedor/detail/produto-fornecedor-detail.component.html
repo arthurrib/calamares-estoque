@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="produtoFornecedor">
+      <h2 data-cy="produtoFornecedorDetailsHeading"><span>Produto Fornecedor</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ produtoFornecedor.id }}</span>
+        </dd>
+        <dt><span>Valor</span></dt>
+        <dd>
+          <span>{{ produtoFornecedor.valor }}</span>
+        </dd>
+        <dt><span>Observacoes</span></dt>
+        <dd>
+          <span>{{ produtoFornecedor.observacoes }}</span>
+        </dd>
+        <dt><span>Produto</span></dt>
+        <dd>
+          <div *ngIf="produtoFornecedor.produto">
+            <a [routerLink]="['/produto', produtoFornecedor.produto.id, 'view']">{{ produtoFornecedor.produto.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Fornecedor</span></dt>
+        <dd>
+          <div *ngIf="produtoFornecedor.fornecedor">
+            <a [routerLink]="['/fornecedor', produtoFornecedor.fornecedor.id, 'view']">{{ produtoFornecedor.fornecedor.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Produto Fornecedor</span></dt>
+        <dd>
+          <div *ngIf="produtoFornecedor.produtoFornecedor">
+            <a [routerLink]="['/pedido', produtoFornecedor.produtoFornecedor.id, 'view']">{{ produtoFornecedor.produtoFornecedor.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/produto-fornecedor', produtoFornecedor.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

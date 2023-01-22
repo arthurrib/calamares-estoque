@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230122201035",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "pedido",
+  "fields": [
+    {
+      "fieldName": "dataPedido",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valorTotal",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Pedido",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "produtoFornecedor",
+      "otherEntityRelationshipName": "produtoFornecedor",
+      "relationshipName": "produtoFornecedor",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

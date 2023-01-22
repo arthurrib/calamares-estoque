@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="produto">
+      <h2 data-cy="produtoDetailsHeading"><span>Produto</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ produto.id }}</span>
+        </dd>
+        <dt><span>Estoque</span></dt>
+        <dd>
+          <span>{{ produto.estoque }}</span>
+        </dd>
+        <dt><span>Estoque Minimo</span></dt>
+        <dd>
+          <span>{{ produto.estoqueMinimo }}</span>
+        </dd>
+        <dt><span>Valor Ideal</span></dt>
+        <dd>
+          <span>{{ produto.valorIdeal }}</span>
+        </dd>
+        <dt><span>Tipo</span></dt>
+        <dd>
+          <span>{{ produto.tipo }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/produto', produto.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

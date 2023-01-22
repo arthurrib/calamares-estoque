@@ -48,6 +48,11 @@ public class CacheConfiguration {
             createCache(cm, com.calamares.estoque.domain.User.class.getName());
             createCache(cm, com.calamares.estoque.domain.Authority.class.getName());
             createCache(cm, com.calamares.estoque.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.calamares.estoque.domain.Produto.class.getName());
+            createCache(cm, com.calamares.estoque.domain.Fornecedor.class.getName());
+            createCache(cm, com.calamares.estoque.domain.ProdutoFornecedor.class.getName());
+            createCache(cm, com.calamares.estoque.domain.Pedido.class.getName());
+            createCache(cm, com.calamares.estoque.domain.Pedido.class.getName() + ".produtoFornecedors");
             // jhipster-needle-ehcache-add-entry
         };
     }
