@@ -1,0 +1,46 @@
+{
+  "applications": "*",
+  "changelogDate": "20230122201034",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "produto_fornecedor",
+  "fields": [
+    {
+      "fieldName": "valor",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProdutoFornecedor",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "produto",
+      "otherEntityRelationshipName": "produtoFornecedor",
+      "ownerSide": true,
+      "relationshipName": "produto",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "fornecedor",
+      "otherEntityRelationshipName": "produtoFornecedor",
+      "ownerSide": true,
+      "relationshipName": "fornecedor",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "pedido",
+      "otherEntityRelationshipName": "produtoFornecedor",
+      "relationshipName": "produtoFornecedor",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

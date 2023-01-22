@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProdutoFornecedor.
+    -->
+    <changeSet id="20230122201034-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="produto_id"
+                                 baseTableName="produto_fornecedor"
+                                 constraintName="fk_produto_fornecedor__produto_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="produto"/>
+
+        <addForeignKeyConstraint baseColumnNames="fornecedor_id"
+                                 baseTableName="produto_fornecedor"
+                                 constraintName="fk_produto_fornecedor__fornecedor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fornecedor"/>
+
+        <addForeignKeyConstraint baseColumnNames="produto_fornecedor_id"
+                                 baseTableName="produto_fornecedor"
+                                 constraintName="fk_produto_fornecedor__produto_fornecedor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pedido"/>
+    </changeSet>
+</databaseChangeLog>

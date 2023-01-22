@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230122201032",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "produto",
+  "fields": [
+    {
+      "fieldName": "estoque",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estoqueMinimo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "valorIdeal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Produto",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "produtoFornecedor",
+      "otherEntityRelationshipName": "produto",
+      "ownerSide": false,
+      "relationshipName": "produtoFornecedor",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
